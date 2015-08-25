@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+  <window id="win" use="com.twinstorm.zkskeleton.ui.user.UserRoleManageWindow">
+
+    <groupbox mold="3d" width="100%">
+      <caption label="Manage Roles"/>
+      <vbox>
+        <listbox model="@{userRoleService.all}" selectedItem="@{win.selected}">
+          <listhead>
+            <listheader label="Name"/>
+          </listhead>
+          <listitem self="@{each=role}">
+            <listcell label="@{role.name}"/>
+          </listitem>
+        </listbox>
+
+        <grid id="gb">
+          <rows>
+            <row>
+              Name:
+              <textbox id="name" value="@{win.selected.name}" constraint="no empty"/>
+            </row>
+            <row valign="top">
+              Authorities:
+              <listbox id="authorities" model="@{win.allAuthorities}" multiple="true" checkmark="true" rows="8"/>
+            </row>
+          </rows>
+        </grid>
+
+        <hbox align="end">
+          <button label="Clear" onClick="win.clear()"/>
+          <button label="Save" onClick="win.save(); win.clear();"/>
+        </hbox>
+      </vbox>
+    </groupbox>
+  </window>
+
+
+</zk>

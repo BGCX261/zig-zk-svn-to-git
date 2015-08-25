@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
+<?page id="order-properties"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+  <window id="win" width="100%" use="com.twinstorm.zkskeleton.ui.user.UserPropertiesWindow">
+
+    <groupbox id="groupbox" mold="3d" width="100%">
+      <vbox>
+        <grid id="gb">
+          <rows>
+            <row>
+              First Name:
+              <textbox id="firstName" value="@{win.selected.firstName}" constraint="no empty"/>
+            </row>
+            <row>
+              Surname:
+              <textbox id="surname" value="@{win.selected.surname}" constraint="no empty"/>
+            </row>
+            <row>
+              Username:
+              <textbox id="username" value="@{win.selected.username}" constraint="no empty"/>
+            </row>
+            <row>
+              Password:
+              <textbox id="password" type="password"/>
+            </row>
+            <row>
+              Password (Confirm):
+              <textbox id="password_confirm" type="password"/>
+            </row>
+          </rows>
+        </grid>
+
+        <hbox align="end">
+          <button label="Clear" onClick="win.clear()"/>
+          <button label="Save" onClick="win.save(); win.clear();"/>
+        </hbox>
+      </vbox>
+    </groupbox>
+
+  </window>
+
+
+</zk>

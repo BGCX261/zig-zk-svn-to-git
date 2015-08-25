@@ -1,0 +1,23 @@
+<zk>
+
+  <listener>
+    <description>Acegi SecurityContext Handler</description>
+    <listener-class>org.zkoss.zkplus.acegi.AcegiSecurityContextListener</listener-class>
+  </listener>
+
+  <listener>
+    <description>ThreadLocal Variables Synchronizer</description>
+    <listener-class>org.zkoss.zkplus.util.ThreadLocalListener</listener-class>
+  </listener>
+
+  <preference>
+    <name>ThreadLocal</name>
+    <value>
+      org.springframework.transaction.support.TransactionSynchronizationManager=resources,synchronizations,currentTransactionName,currentTransactionReadOnly,actualTransactionActive;
+      org.springframework.orm.hibernate3.SessionFactoryUtils=deferredCloseHolder;
+      org.springframework.transaction.interceptor.TransactionAspectSupport=transactionInfoHolder;
+    </value>
+  </preference>
+
+
+</zk>

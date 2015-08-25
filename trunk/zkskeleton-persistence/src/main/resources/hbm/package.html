@@ -1,0 +1,6 @@
+This package contain the Hibernate mappings. <br>
+<br>
+
+When you add a mapping here, also add it to zkskeleton-persistence-context.xml.
+This needs to be addressed at a later stage to pick up the files automatically. The reason for not using a mappingDirectoryLocation 
+pointing to this package is that the JAR does not contain directory entries, so it throws FileNotFoundException.

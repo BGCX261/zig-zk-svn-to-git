@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+
+    <class name="com.twinstorm.zkskeleton.domain.user.CustomUser" table="user">
+        <id name="id" column="id" type="long">
+	        <generator class="seqhilo">
+	                <param name="sequence">hi_value</param>
+	                <param name="max_lo">100</param>
+	        </generator>
+        </id>
+ 
+        <property name="username" column="username" type="string" unique="true" not-null="true"/>
+        <property name="password" column="password" type="string" not-null="true"/>
+        
+        <property name="firstName" column="firstName" type="string"/>
+        <property name="surname" column="surname" type="string"/>
+        
+        <property name="createdDate" column="createdDate" type="timestamp"/>
+        <property name="lastLogin" column="lastLogin" type="timestamp"/>
+        
+        <property name="enabled" column="enabled" type="boolean"/>
+        
+        <set name="roles" table="user_role_link" cascade="all">
+        	<key column="userid"/>
+        	<many-to-many class="com.twinstorm.zkskeleton.domain.user.UserRole" column="roleid"/>
+        </set>
+    </class>
+    
+</hibernate-mapping>

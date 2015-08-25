@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page id="toc"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="root">
+		<hbox width="100%">
+				<window id="treelist" width="320px">
+					<tree id="toc" pageSize="-1" vflex="true" use="com.twinstorm.zkskeleton.ui.util.TocTree">
+						<treecols>
+							<treecol label="Menu"/>
+						</treecols>
+						<treechildren>
+              <treeitem label="Administration">
+                <treechildren>
+                  <treeitem id="adminUsers" label="Users">
+                    <treechildren>
+                      <treeitem id="adminUsersProperties" label="Create User" value="/zul/user/user-properties.zul"/>
+                      <treeitem id="adminusersSearch" label="Search Users" value="/zul/user/user-search.zul"/>
+                      <treeitem id="adminUserRoles" label="Manage Roles" value="/zul/user/role-manage.zul"/>
+                    </treechildren>
+                  </treeitem>
+                 </treechildren>
+              </treeitem>
+            </treechildren>
+					</tree>
+				</window>
+				<window id="contents" border="normal" width="99%">
+					<include id="xcontents" src="${requestScope.contentSrc}"/>
+				</window>
+		</hbox>
+	</window>
+
+</zk>
+
